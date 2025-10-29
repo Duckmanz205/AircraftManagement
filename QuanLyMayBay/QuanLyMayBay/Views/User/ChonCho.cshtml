@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Ghế - Đặt Vé Máy Bay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <!-- Header -->
+        <div class="mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Chọn Ghế Ngồi</h1>
+            <p class="text-gray-600">Chuyến bay VN123 • SGN → HAN • 15:30 - 17:45</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <!-- Sơ đồ ghế -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-md p-4 md:p-6">
+                    <h2 class="text-lg md:text-xl font-semibold mb-4">Sơ Đồ Ghế</h2>
+
+                    <!-- Chú thích -->
+                    <div class="flex flex-wrap gap-4 mb-6 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-green-500 rounded"></div>
+                            <span>Ghế trống</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-gray-400 rounded"></div>
+                            <span>Đã đặt</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-orange-500 rounded"></div>
+                            <span>Ghế đặc biệt</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-blue-500 rounded border-2 border-blue-700"></div>
+                            <span>Đã chọn</span>
+                        </div>
+                    </div>
+
+                    <!-- Sơ đồ máy bay -->
+                    <div class="relative">
+                        <!-- Đầu máy bay -->
+                        <div class="w-full h-8 bg-gradient-to-r from-gray-300 to-gray-400 rounded-t-full mb-4 flex items-center justify-center">
+                            <span class="text-xs font-medium text-gray-700">✈️ Đầu máy bay</span>
+                        </div>
+
+                        <!-- Ghế hạng thương gia -->
+                        <div class="mb-6">
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">Hạng Thương Gia</h3>
+                            <div class="grid grid-cols-4 gap-2 max-w-md mx-auto">
+                                <!-- Hàng 1-3 -->
+                                <div class="seat available" data-seat="1A" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="1B" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="1C" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="1D" data-price="2500000" onclick="selectSeat(this)"></div>
+
+                                <div class="seat occupied" data-seat="2A" data-price="2500000"></div>
+                                <div class="seat available" data-seat="2B" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="2C" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat occupied" data-seat="2D" data-price="2500000"></div>
+
+                                <div class="seat available" data-seat="3A" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="3B" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="3C" data-price="2500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="3D" data-price="2500000" onclick="selectSeat(this)"></div>
+                            </div>
+                        </div>
+
+                        <!-- Phân cách -->
+                        <div class="border-t border-gray-300 mb-6"></div>
+
+                        <!-- Ghế hạng phổ thông -->
+                        <div>
+                            <h3 class="text-sm font-medium text-gray-700 mb-3">Hạng Phổ Thông</h3>
+                            <div class="grid grid-cols-6 gap-2 max-w-lg mx-auto">
+                                <!-- Hàng 10-25 -->
+                                <div class="seat special" data-seat="10A" data-price="1800000" onclick="selectSeat(this)"></div>
+                                <div class="seat special" data-seat="10B" data-price="1800000" onclick="selectSeat(this)"></div>
+                                <div class="seat special" data-seat="10C" data-price="1800000" onclick="selectSeat(this)"></div>
+                                <div class="seat special" data-seat="10D" data-price="1800000" onclick="selectSeat(this)"></div>
+                                <div class="seat special" data-seat="10E" data-price="1800000" onclick="selectSeat(this)"></div>
+                                <div class="seat special" data-seat="10F" data-price="1800000" onclick="selectSeat(this)"></div>
+
+                                <div class="seat available" data-seat="11A" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat occupied" data-seat="11B" data-price="1500000"></div>
+                                <div class="seat available" data-seat="11C" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="11D" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat occupied" data-seat="11E" data-price="1500000"></div>
+                                <div class="seat available" data-seat="11F" data-price="1500000" onclick="selectSeat(this)"></div>
+
+                                <div class="seat available" data-seat="12A" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="12B" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat occupied" data-seat="12C" data-price="1500000"></div>
+                                <div class="seat occupied" data-seat="12D" data-price="1500000"></div>
+                                <div class="seat available" data-seat="12E" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="12F" data-price="1500000" onclick="selectSeat(this)"></div>
+
+                                <div class="seat available" data-seat="13A" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="13B" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="13C" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="13D" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="13E" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat occupied" data-seat="13F" data-price="1500000"></div>
+
+                                <div class="seat occupied" data-seat="14A" data-price="1500000"></div>
+                                <div class="seat available" data-seat="14B" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="14C" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="14D" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="14E" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="14F" data-price="1500000" onclick="selectSeat(this)"></div>
+
+                                <div class="seat available" data-seat="15A" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="15B" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="15C" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat available" data-seat="15D" data-price="1500000" onclick="selectSeat(this)"></div>
+                                <div class="seat occupied" data-seat="15E" data-price="1500000"></div>
+                                <div class="seat available" data-seat="15F" data-price="1500000" onclick="selectSeat(this)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Khung tóm tắt -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-4 md:p-6 sticky top-6">
+                    <h2 class="text-lg md:text-xl font-semibold mb-4">Tóm Tắt Đặt Vé</h2>
+
+                    <!-- Thông tin chuyến bay -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Hành khách:</span>
+                            <span class="font-medium">1 người lớn</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Ghế đã chọn:</span>
+                            <span class="font-medium" id="selected-seat">Chưa chọn</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Giá vé:</span>
+                            <span class="font-medium" id="ticket-price">1,500,000 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Hành lý:</span>
+                            <span class="font-medium">7kg xách tay</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Phí hành lý:</span>
+                            <span class="font-medium" id="baggage-fee">0 VNĐ</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-4 mb-6">
+                        <div class="flex justify-between items-center text-lg font-bold">
+                            <span>Tổng tiền:</span>
+                            <span class="text-blue-600" id="total-price">1,500,000 VNĐ</span>
+                        </div>
+                    </div>
+
+                    <button id="continue-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                        Chọn ghế để tiếp tục
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form thông tin hành khách (ẩn ban đầu) -->
+        <div id="passenger-form" class="mt-8 bg-white rounded-lg shadow-md p-4 md:p-6 hidden">
+            <h2 class="text-lg md:text-xl font-semibold mb-6">Thông Tin Hành Khách</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Họ và tên *</label>
+                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nguyễn Văn A">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Giới tính *</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Chọn giới tính</option>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Ngày sinh *</label>
+                    <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Quốc gia *</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Chọn quốc gia</option>
+                        <option value="VN">Việt Nam</option>
+                        <option value="US">Hoa Kỳ</option>
+                        <option value="JP">Nhật Bản</option>
+                        <option value="KR">Hàn Quốc</option>
+                        <option value="SG">Singapore</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                    <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="example@email.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Số điện thoại *</label>
+                    <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="0901234567">
+                </div>
+            </div>
+
+            <!-- Lựa chọn hành lý -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold mb-4">Lựa Chọn Hành Lý</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Hành lý xách tay</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" onchange="updateBaggageFee()">
+                            <option value="7kg-0">7kg (Miễn phí)</option>
+                            <option value="10kg-200000">10kg (+200,000 VNĐ)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Hành lý ký gửi</label>
+                        <select id="checked-baggage" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" onchange="updateBaggageFee()">
+                            <option value="0kg-0">Không (Miễn phí)</option>
+                            <option value="20kg-500000">20kg (+500,000 VNĐ)</option>
+                            <option value="30kg-800000">30kg (+800,000 VNĐ)</option>
+                            <option value="40kg-1200000">40kg (+1,200,000 VNĐ)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Phí hành lý thêm:</span>
+                        <span class="font-medium text-blue-600" id="additional-baggage-fee">0 VNĐ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <button class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors" onclick="goBackToSeatSelection()">
+                    Quay lại chọn ghế
+                </button>
+                <button class="flex-1 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                    Tiếp tục đến thanh toán
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="seat-tooltip" class="absolute bg-black text-white text-xs px-2 py-1 rounded shadow-lg pointer-events-none z-50 hidden">
+        <div id="tooltip-content"></div>
+    </div>
+
+    <style>
+        .seat {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .seat.available {
+            background-color: #10b981;
+        }
+
+        .seat.available:hover {
+            background-color: #059669;
+            transform: scale(1.1);
+        }
+
+        .seat.occupied {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .seat.special {
+            background-color: #f59e0b;
+        }
+
+        .seat.special:hover {
+            background-color: #d97706;
+            transform: scale(1.1);
+        }
+
+        .seat.selected {
+            background-color: #3b82f6;
+            border: 2px solid #1d4ed8;
+        }
+
+        @@media (max-width: 768px) {
+            .seat {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+
+    <script>
+        let selectedSeat = null;
+        let basePrice = 1500000;
+        let baggageFee = 0;
+
+        function selectSeat(seatElement) {
+            // Bỏ chọn ghế cũ
+            if (selectedSeat) {
+                selectedSeat.classList.remove('selected');
+            }
+
+            // Chọn ghế mới
+            selectedSeat = seatElement;
+            seatElement.classList.add('selected');
+
+            // Cập nhật thông tin
+            const seatNumber = seatElement.dataset.seat;
+            const seatPrice = parseInt(seatElement.dataset.price);
+
+            document.getElementById('selected-seat').textContent = seatNumber;
+            document.getElementById('ticket-price').textContent = formatPrice(seatPrice);
+
+            basePrice = seatPrice;
+            updateTotalPrice();
+
+            // Kích hoạt nút tiếp tục
+            const continueBtn = document.getElementById('continue-btn');
+            continueBtn.disabled = false;
+            continueBtn.textContent = 'Tiếp tục';
+            continueBtn.onclick = showPassengerForm;
+        }
+
+        function showPassengerForm() {
+            document.getElementById('passenger-form').classList.remove('hidden');
+            document.getElementById('passenger-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goBackToSeatSelection() {
+            document.getElementById('passenger-form').classList.add('hidden');
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateBaggageFee() {
+            const checkedBaggage = document.getElementById('checked-baggage').value;
+            const fee = parseInt(checkedBaggage.split('-')[1]) || 0;
+
+            baggageFee = fee;
+            document.getElementById('baggage-fee').textContent = formatPrice(fee);
+            document.getElementById('additional-baggage-fee').textContent = formatPrice(fee);
+
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            const total = basePrice + baggageFee;
+            document.getElementById('total-price').textContent = formatPrice(total);
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price) + ' VNĐ';
+        }
+
+        // Tooltip functionality
+        document.addEventListener('mousemove', function(e) {
+            const tooltip = document.getElementById('seat-tooltip');
+            tooltip.style.left = e.pageX + 10 + 'px';
+            tooltip.style.top = e.pageY - 30 + 'px';
+        });
+
+        document.querySelectorAll('.seat').forEach(seat => {
+            seat.addEventListener('mouseenter', function(e) {
+                if (!this.classList.contains('occupied')) {
+                    const tooltip = document.getElementById('seat-tooltip');
+                    const content = document.getElementById('tooltip-content');
+                    const seatNumber = this.dataset.seat;
+                    const price = formatPrice(parseInt(this.dataset.price));
+
+                    content.innerHTML = `Ghế ${seatNumber}<br>${price}`;
+                    tooltip.classList.remove('hidden');
+                }
+            });
+
+            seat.addEventListener('mouseleave', function() {
+                document.getElementById('seat-tooltip').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

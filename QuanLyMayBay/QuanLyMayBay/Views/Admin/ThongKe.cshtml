@@ -1,0 +1,267 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="flex">
+    <!-- Main Content -->
+    <main class="flex-1 p-4 lg:p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Thống kê doanh thu</h2>
+            <p class="text-gray-600">Tổng quan doanh thu và hiệu suất bán vé</p>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Tổng doanh thu</p>
+                        <p class="text-2xl font-bold text-gray-900">2.4 tỷ VND</p>
+                        <p class="text-sm text-gray-500">+12% so với tháng trước</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 15h2c0 1.08 1.37 2 3 2s3-.92 3-2c0-1.1-1.04-1.5-3.24-2.03C9.64 12.44 7 11.78 7 9c0-1.79 1.47-3.31 3.5-3.82V3h3v2.18C15.53 5.69 17 7.21 17 9h-2c0-1.08-1.37-2-3-2s-3 .92-3 2c0 1.1 1.04 1.5 3.24 2.03C14.36 11.56 17 12.22 17 15c0 1.79-1.47 3.31-3.5 3.82V21h-3v-2.18C8.47 18.31 7 16.79 7 15z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Tổng số vé bán</p>
+                        <p class="text-2xl font-bold text-gray-900">15,847</p>
+                        <p class="text-sm text-gray-500">+8% so với tháng trước</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 10v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6c0-1.11.89-2 2-2h16a2 2 0 0 1 2 2zm-2 0H4v6h16v-6zM2 6h20v2H2V6z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Số chuyến bay</p>
+                        <p class="text-2xl font-bold text-gray-900">1,234</p>
+                        <p class="text-sm text-gray-500">+5% so với tháng trước</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Giá vé trung bình</p>
+                        <p class="text-2xl font-bold text-gray-900">1.5M VND</p>
+                        <p class="text-sm text-gray-500">+3% so với tháng trước</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 11H7v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-9h-2m-7 0V9a3 3 0 0 1 6 0v2M9 11h6" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Revenue Chart Section -->
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 lg:mb-0">Biểu đồ doanh thu theo tháng</h3>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                    </select>
+                    <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option>Tất cả tuyến bay</option>
+                        <option>HCM - HN</option>
+                        <option>HN - DN</option>
+                    </select>
+                    <div class="flex gap-2">
+                        <input type="date" class="px-3 py-2 border border-gray-300 rounded-lg text-sm" placeholder="Từ ngày">
+                        <input type="date" class="px-3 py-2 border border-gray-300 rounded-lg text-sm" placeholder="Đến ngày">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Container -->
+            <div class="h-80 bg-gray-50 rounded-lg border border-gray-200 p-4 overflow-hidden">
+                <div class="h-full flex items-end justify-between space-x-2">
+                    <!-- Chart Bars -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-300 rounded-t" style="height: 60%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T1</span>
+                        <span class="text-xs text-gray-500">180M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-400 rounded-t" style="height: 75%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T2</span>
+                        <span class="text-xs text-gray-500">220M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-500 rounded-t" style="height: 85%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T3</span>
+                        <span class="text-xs text-gray-500">250M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-600 rounded-t" style="height: 90%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T4</span>
+                        <span class="text-xs text-gray-500">270M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-500 rounded-t" style="height: 80%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T5</span>
+                        <span class="text-xs text-gray-500">240M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-400 rounded-t" style="height: 70%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T6</span>
+                        <span class="text-xs text-gray-500">210M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-600 rounded-t" style="height: 95%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T7</span>
+                        <span class="text-xs text-gray-500">285M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-700 rounded-t" style="height: 100%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T8</span>
+                        <span class="text-xs text-gray-500">300M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-500 rounded-t" style="height: 85%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T9</span>
+                        <span class="text-xs text-gray-500">255M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-600 rounded-t" style="height: 88%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T10</span>
+                        <span class="text-xs text-gray-500">265M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-400 rounded-t" style="height: 72%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T11</span>
+                        <span class="text-xs text-gray-500">215M</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-full bg-gray-800 rounded-t" style="height: 98%;"></div>
+                        <span class="text-xs text-gray-600 mt-2">T12</span>
+                        <span class="text-xs text-gray-500">295M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table Section -->
+        <div class="bg-white rounded-lg border border-gray-200">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 lg:mb-0">Dữ liệu chi tiết chuyến bay</h3>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="relative">
+                            <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <input type="text" placeholder="Tìm kiếm mã chuyến bay..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm">
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                                </svg>
+                                Xuất Excel
+                            </button>
+                            <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                                </svg>
+                                Xuất PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mã chuyến bay</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày bay</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số vé</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doanh thu</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giá trung bình</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN123</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/12/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">180</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">270M VND</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.5M VND</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN456</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/12/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">165</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">248M VND</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.5M VND</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN789</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">14/12/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">172</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">258M VND</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.5M VND</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN321</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">14/12/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">158</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">237M VND</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.5M VND</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN654</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">13/12/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">189</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">284M VND</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.5M VND</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200">
+                <div class="flex items-center justify-between">
+                    <p class="text-sm text-gray-700">Hiển thị 1-5 trong tổng số 247 kết quả</p>
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-500 flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                            </svg>
+                            Trước
+                        </button>
+                        <button class="px-3 py-1 bg-gray-900 text-white rounded text-sm">1</button>
+                        <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-700">2</button>
+                        <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-700">3</button>
+                        <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-700 flex items-center gap-1">
+                            Sau
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+

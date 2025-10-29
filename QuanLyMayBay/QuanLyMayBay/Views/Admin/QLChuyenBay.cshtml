@@ -1,0 +1,288 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<body class="bg-gray-50">
+    <!-- Main Layout -->
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Content Area -->
+            <main class="flex-1 overflow-auto p-6">
+                <!-- Toolbar -->
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="openAddModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors">
+                                <i class="fas fa-plus mr-2"></i>
+                                Thêm chuyến
+                            </button>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors">
+                                <i class="fas fa-file-excel mr-2"></i>
+                                Xuất Excel
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-3 w-full sm:w-auto">
+                            <div class="relative flex-1 sm:flex-none">
+                                <input type="text" placeholder="Tìm kiếm chuyến bay..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-80">
+                                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <span class="text-gray-700 font-medium">Lọc theo trạng thái:</span>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Tất cả</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="delayed">Delayed</option>
+                            <option value="landed">Landed</option>
+                        </select>
+                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-filter mr-2"></i>
+                            Áp dụng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Data Grid -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <input type="checkbox" class="rounded border-gray-300">
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mã chuyến</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mã máy bay</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giờ cất cánh</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giờ hạ cánh</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50 cursor-pointer" onclick="selectRow(this, 'VN001')">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="rounded border-gray-300">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">A320-001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">08:30</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10:45</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Scheduled</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <div class="flex space-x-2">
+                                            <button onclick="openEditModal('VN001')" class="text-blue-600 hover:text-blue-900 hidden edit-btn">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button onclick="confirmDelete('VN001')" class="text-red-600 hover:text-red-900 hidden delete-btn">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 cursor-pointer" onclick="selectRow(this, 'VN002')">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="rounded border-gray-300">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">B737-002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">14:20</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">16:30</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Delayed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <div class="flex space-x-2">
+                                            <button onclick="openEditModal('VN002')" class="text-blue-600 hover:text-blue-900 hidden edit-btn">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button onclick="confirmDelete('VN002')" class="text-red-600 hover:text-red-900 hidden delete-btn">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 cursor-pointer" onclick="selectRow(this, 'VN003')">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="rounded border-gray-300">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VN003</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">A350-003</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">18:15</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20:45</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Landed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <div class="flex space-x-2">
+                                            <button onclick="openEditModal('VN003')" class="text-blue-600 hover:text-blue-900 hidden edit-btn">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button onclick="confirmDelete('VN003')" class="text-red-600 hover:text-red-900 hidden delete-btn">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                        <div class="flex-1 flex justify-between sm:hidden">
+                            <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Trước</button>
+                            <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Sau</button>
+                        </div>
+                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm text-gray-700">Hiển thị <span class="font-medium">1</span> đến <span class="font-medium">3</span> của <span class="font-medium">3</span> kết quả</p>
+                            </div>
+                            <div>
+                                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+                                    <button class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</button>
+                                    <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    <!-- Add/Edit Modal -->
+    <div id="flightModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900" id="modalTitle">Thêm Chuyến Bay</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mã chuyến</label>
+                        <input type="text" id="flightCode" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="VN001">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Máy bay</label>
+                        <select id="aircraftSelect" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Chọn máy bay</option>
+                            <option value="A320-001">A320-001</option>
+                            <option value="B737-002">B737-002</option>
+                            <option value="A350-003">A350-003</option>
+                            <option value="B787-004">B787-004</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Giờ cất cánh</label>
+                            <input type="time" id="departureTime" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Giờ hạ cánh</label>
+                            <input type="time" id="arrivalTime" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Trạng thái</label>
+                        <select id="statusSelect" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="scheduled">Scheduled</option>
+                            <option value="delayed">Delayed</option>
+                            <option value="landed">Landed</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" onclick="closeModal()" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors">Hủy</button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+                    <i class="fas fa-exclamation-triangle text-red-600"></i>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Xác nhận xóa</h3>
+                <p class="text-sm text-gray-500 mb-4">Bạn có chắc chắn muốn xóa chuyến bay <span id="deleteFlightCode" class="font-medium"></span>? Hành động này không thể hoàn tác.</p>
+                <div class="flex justify-center space-x-3">
+                    <button onclick="closeDeleteModal()" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors">Hủy</button>
+                    <button onclick="deleteFlight()" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedRow = null;
+        let currentFlightCode = null;
+
+        function selectRow(row, flightCode) {
+            // Remove selection from all rows
+            document.querySelectorAll('tbody tr').forEach(r => {
+                r.classList.remove('bg-blue-50');
+                r.querySelectorAll('.edit-btn, .delete-btn').forEach(btn => btn.classList.add('hidden'));
+            });
+
+            // Add selection to current row
+            row.classList.add('bg-blue-50');
+            row.querySelectorAll('.edit-btn, .delete-btn').forEach(btn => btn.classList.remove('hidden'));
+
+            selectedRow = row;
+            currentFlightCode = flightCode;
+        }
+
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Thêm Chuyến Bay';
+            document.getElementById('flightCode').value = '';
+            document.getElementById('aircraftSelect').value = '';
+            document.getElementById('departureTime').value = '';
+            document.getElementById('arrivalTime').value = '';
+            document.getElementById('statusSelect').value = 'scheduled';
+            document.getElementById('flightModal').classList.remove('hidden');
+        }
+
+        function openEditModal(flightCode) {
+            document.getElementById('modalTitle').textContent = 'Sửa Chuyến Bay';
+            // Pre-fill form with existing data
+            document.getElementById('flightCode').value = flightCode;
+            document.getElementById('flightModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('flightModal').classList.add('hidden');
+        }
+
+        function confirmDelete(flightCode) {
+            document.getElementById('deleteFlightCode').textContent = flightCode;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+        }
+
+        function deleteFlight() {
+            // Handle delete logic here
+            console.log('Deleting flight:', currentFlightCode);
+            closeDeleteModal();
+        }
+    </script>
+</body>
