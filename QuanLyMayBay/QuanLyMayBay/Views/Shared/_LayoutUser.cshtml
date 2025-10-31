@@ -2,6 +2,8 @@
 @{
     var isLoggedIn = Session["UserName"] != null;
     var userName = Session["UserName"] as string;
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var action = ViewContext.RouteData.Values["action"].ToString();
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -11,6 +13,18 @@
     <title>SkyBooking - Đặt vé máy bay</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-50 font-sans">
     <!-- Header -->
@@ -25,14 +39,28 @@
 
 
 
-                if (userName != null)
+                @if (userName != null)
                 {
                     <!-- Navigation Menu -->
                     <nav class="hidden md:flex space-x-8">
-                        <a href="#" onclick="setActiveMenu(this)" class="navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1">Trang chủ</a>
-                        <a href="#" onclick="setActiveMenu(this)" class="navbar-item text-gray-700 hover:text-blue-600 transition-colors">Vé của tôi</a>
-                        <a href="#" onclick="setActiveMenu(this)" class="navbar-item text-gray-700 hover:text-blue-600 transition-colors">Check-in</a>
-                        <a href="#" onclick="setActiveMenu(this)" class="navbar-item text-gray-700 hover:text-blue-600 transition-colors">Liên hệ</a>
+                        <a href="@Url.Action("TrangChu","User")"
+                           class=" @(controller == "User" && action == "TrangChu" ?
+                            "navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1":
+                            "navbar-item text-gray-700 hover:text-blue-600 transition-colors")">
+                            Trang chủ
+                        </a>
+                        <a href="@Url.Action("VeCuaToi","User")"
+                           class=" @(controller == "User" && action == "VeCuaToi" ?
+                             "navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1":
+                             "navbar-item text-gray-700 hover:text-blue-600 transition-colors")">Vé của tôi</a>
+                        <a href="@Url.Action("LichSu","User")" 
+                           class=" @(controller == "User" && action == "LichSu" ?
+                             "navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1":
+                             "navbar-item text-gray-700 hover:text-blue-600 transition-colors")">Check-in</a>
+                        <a href="@Url.Action("DangNhap","User")"
+                           class=" @(controller == "User" && action == "LienHe" ?
+                             "navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1":
+                             "navbar-item text-gray-700 hover:text-blue-600 transition-colors")">Liên hệ</a>
                     </nav>
 
                     <!-- User Profile Dropdown -->
@@ -55,20 +83,21 @@
                                         <p class="text-sm font-medium text-gray-800">Nguyễn Văn A</p>
                                         <p class="text-xs text-gray-500">nguyenvana@email.com</p>
                                     </div>
-                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <a href="@Url.Action("HoSo","User")"
+                                       class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                         <i class="fas fa-user mr-3 text-gray-400"></i>Hồ sơ cá nhân
                                     </a>
-                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <a href="@Url.Action("LichSu","User")"
+                                       class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                         <i class="fas fa-ticket-alt mr-3 text-gray-400"></i>Vé của tôi
                                     </a>
-                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                        <i class="fas fa-heart mr-3 text-gray-400"></i>Yêu thích
-                                    </a>
-                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                    <a href="@Url.Action("CaiDat","User")"
+                                       class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                         <i class="fas fa-cog mr-3 text-gray-400"></i>Cài đặt
                                     </a>
                                     <div class="border-t border-gray-100 mt-2 pt-2">
-                                        <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                        <a href="@Url.Action("DangNhap","User")"
+                                           class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50">
                                             <i class="fas fa-sign-out-alt mr-3"></i>Đăng xuất
                                         </a>
                                     </div>
@@ -86,10 +115,18 @@
                 {
                     <!-- Navigation Menu -->
                     <nav class="hidden md:flex space-x-8">
-                        <a href="#" class="text-blue-600 font-medium border-b-2 border-blue-600 pb-1">Trang chủ</a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Vé của tôi</a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Check-in</a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors">Liên hệ</a>
+                        <a href="@Url.Action("TrangChu","User")"
+                           class=" @(controller == "User" && action == "TrangChu" ?
+                             "navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1":
+                             "navbar-item text-gray-700 hover:text-blue-600 transition-colors")">Trang chủ</a>
+                        <a href="@Url.Action("DangNhap","User")"
+                           class="text-gray-700 hover:text-blue-600 transition-colors">Vé của tôi</a>
+                        <a href="@Url.Action("CheckInNgoai","User")"
+                            class=" @(controller == "User" && action == "CheckInNgoai" ?
+                             "navbar-item text-blue-600 active font-medium border-b-2 border-blue-600 pb-1":
+                             "navbar-item text-gray-700 hover:text-blue-600 transition-colors")">Check-in</a>
+                        <a href="@Url.Action("DangNhap","User")"
+                           class="text-gray-700 hover:text-blue-600 transition-colors">Liên hệ</a>
                     </nav>
 
                     <!-- Nút đăng nhập -->
@@ -105,7 +142,7 @@
         </div>
     </header>
     <!-- Hero Section with Search -->
-    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-12 md:py-20">
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 pb-12 md:pb-20">
         @RenderBody()
     </section>
 
@@ -175,6 +212,7 @@
         function setActiveMenu(element) {
             // Remove active class from all items
             document.querySelectorAll('.navbar-item').forEach(item => {
+
                 item.classList.remove('active', 'font-medium', 'border-b-2', 'border-blue-600', 'pb-1', 'text-blue-600');
                 item.classList.add('text-gray-700');
             });
