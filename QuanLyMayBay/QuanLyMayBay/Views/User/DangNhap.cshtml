@@ -20,10 +20,10 @@
 
         <!-- Form Container -->
         <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
-            <form class="space-y-6">
+            <form class="space-y-6" action="@Url.Action("DangNhapThanhCong","User")" method="post">
                 <!-- Email Field -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2" name="email">
                         Email đăng nhập
                     </label>
                     <div class="relative">
@@ -139,8 +139,6 @@
 
         // Form submission handler
         document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
             // Simulate login process
             const button = document.querySelector('button[type="submit"]');
             const originalText = button.innerHTML;
@@ -156,7 +154,6 @@
 
                 setTimeout(() => {
                     // Redirect to dashboard (simulation)
-                    alert('Chuyển hướng đến trang tra cứu và đặt vé máy bay...');
                     button.innerHTML = originalText;
                     button.disabled = false;
                     button.classList.remove('bg-green-600');
