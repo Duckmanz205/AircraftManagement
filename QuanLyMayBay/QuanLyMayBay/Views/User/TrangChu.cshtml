@@ -1,28 +1,31 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var isLoggedIn = Session["UserName"] != null;
+    var userName = Session["UserName"] as string;
 }
-<!-- Welcome Message -->
-<div class="bg-blue-50 border-b border-blue-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center">
-                <i class="fas fa-sun text-yellow-500 mr-2"></i>
-                <span class="text-blue-800 font-medium">Chào mừng trở lại, Nguyễn Văn A!</span>
-            </div>
-            <div class="hidden sm:flex items-center space-x-4 text-sm">
-                <div class="flex items-center text-blue-700">
-                    <i class="fas fa-star text-yellow-500 mr-1"></i>
-                    <span>2,450 điểm thưởng</span>
+@if (isLoggedIn){
+    <!-- Welcome Message -->
+    <div class="bg-blue-50 border-b border-blue-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-sun text-yellow-500 mr-2"></i>
+                    <span class="text-blue-800 font-medium">Chào mừng trở lại, Nguyễn Văn A!</span>
                 </div>
-                <div class="flex items-center text-blue-700">
-                    <i class="fas fa-plane mr-1"></i>
-                    <span>12 chuyến bay</span>
+                <div class="hidden sm:flex items-center space-x-4 text-sm">
+                    <div class="flex items-center text-blue-700">
+                        <i class="fas fa-star text-yellow-500 mr-1"></i>
+                        <span>2,450 điểm thưởng</span>
+                    </div>
+                    <div class="flex items-center text-blue-700">
+                        <i class="fas fa-plane mr-1"></i>
+                        <span>12 chuyến bay</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+}
 <!-- Hero Section with Search -->
 <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -17,6 +17,12 @@ namespace QuanLyMayBay.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult DangKyThanhCong(FormCollection form)
+        {
+            return RedirectToAction("DangNhap");
+        }
+
         public ActionResult DangNhap()
         {
             return View();
@@ -35,6 +41,11 @@ namespace QuanLyMayBay.Controllers
         {
             return View();
         }
+        public ActionResult VeCuaToi()
+        {
+            return RedirectToAction("LichSu");
+        }
+
         public ActionResult TimKiem()
         {
             return View();
