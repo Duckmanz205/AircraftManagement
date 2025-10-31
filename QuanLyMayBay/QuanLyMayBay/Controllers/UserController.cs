@@ -21,6 +21,12 @@ namespace QuanLyMayBay.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult DangNhapThanhCong(FormCollection form)
+        {
+            Session["UserName"] = form["email"];
+            return RedirectToAction("TrangChu");
+        }
         public ActionResult TrangChu()
         {
             return View();
