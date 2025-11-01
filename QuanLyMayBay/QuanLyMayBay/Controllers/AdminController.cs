@@ -13,6 +13,11 @@ namespace QuanLyMayBay.Controllers
         {
             return View();
         }
+        public ActionResult DangNhapThanhCong()
+        {
+            return RedirectToAction("TrangChu");
+        }
+
         public ActionResult TrangChu()
         {
             return View();
