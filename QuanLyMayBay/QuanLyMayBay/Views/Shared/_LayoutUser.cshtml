@@ -19,7 +19,8 @@
                 extend: {
                     colors: {
                         primary: '#1e40af',
-                        secondary: '#f59e0b'
+                        secondary: '#f59e0b',
+                        accent: '#fb923c'
                     }
                 }
             }
@@ -143,6 +144,7 @@
     </header>
     <!-- Hero Section with Search -->
     <section class="bg-gradient-to-br from-blue-50 to-indigo-100 pb-12 md:pb-20">
+        @Html.Partial("_Breadcrumb")
         @RenderBody()
     </section>
 

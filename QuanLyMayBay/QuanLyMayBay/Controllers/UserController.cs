@@ -43,10 +43,10 @@ namespace QuanLyMayBay.Controllers
         }
         public ActionResult VeCuaToi()
         {
-            return RedirectToAction("LichSu");
+            return View();
         }
 
-        public ActionResult TimKiem()
+        public ActionResult DatVe()
         {
             return View();
         }

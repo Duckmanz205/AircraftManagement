@@ -1,0 +1,72 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    var action = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+
+    string breadcrumb = "Trang chủ";
+
+    // Admin
+    if (controller == "Admin" && action == "ThongKe")
+    {
+        breadcrumb = "Trang chủ → Thống kê";
+    }
+    else if (controller == "Admin" && action == "QLChuyenBay")
+    {
+        breadcrumb = "Trang chủ → Quản lý chuyến bay";
+    }
+    else if (controller == "Admin" && action == "QLPerson")
+    {
+        breadcrumb = "Trang chủ → Quản lý nhân sự & Khách hàng";
+    }
+    else if (controller == "Admin" && action == "QLVe")
+    {
+        breadcrumb = "Trang chủ → Quản lý Vé";
+    }
+    //User
+    if (Session["UserName"]!=null)
+    {
+        if (controller == "User" && action == "VeCuaToi")
+        {
+            breadcrumb = "Trang chủ → Vé của tôi";
+        }
+        else if (controller == "User" && action == "Checkin")
+        {
+            breadcrumb = "Trang chủ → Check-in";
+        }
+        else if (controller == "User" && action == "LienHe")
+        {
+            breadcrumb = "Trang chủ → Liên hệ";
+        }
+    }
+    else
+    {
+        if (controller == "User" && action == "DatVe")
+        {
+            breadcrumb = "Trang chủ → Đặt vé";
+        }
+        else if (controller == "User" && action == "ChonCho")
+        {
+            breadcrumb = "Trang chủ → Chọn Chỗ";
+        }
+        else if (controller == "User" && action == "Thanh Toán")
+        {
+            breadcrumb = "Trang chủ → Thanh Toán";
+        }
+    }
+
+
+
+}
+
+@if (breadcrumb != "Trang chủ")
+{
+    <nav class="text-sm text-gray-600 mt-4 mb-8">
+        <span class="text-blue-600 hover:underline cursor-pointer"
+              onclick="location.href='@Url.Action("TrangChu",controller)'">
+            Trang chủ
+        </span>
+        <span class="mx-2 text-gray-400">/</span>
+        <span class="text-gray-700 font-semibold">
+            @breadcrumb.Replace("Trang chủ → ", "")
+        </span>
+    </nav>
+}
