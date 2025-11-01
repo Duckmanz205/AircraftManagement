@@ -1,25 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kết Quả Tìm Kiếm Chuyến Bay</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e40af',
-                        secondary: '#3b82f6',
-                        accent: '#fb923c'
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-gray-50">
+﻿@{ 
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
     <!-- Header -->
     <header class="bg-white shadow-sm border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -201,7 +182,7 @@
                                         <div class="text-2xl font-bold text-accent">2.450.000₫</div>
                                         <div class="text-sm text-gray-500">Economy</div>
                                     </div>
-                                    <button onclick="selectFlight()" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
+                                    <button onclick="window.location.href='@Url.Action("ChonCho","User")'" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
                                         Chọn chuyến
                                     </button>
                                 </div>
@@ -248,7 +229,7 @@
                                         <div class="text-2xl font-bold text-accent">1.890.000₫</div>
                                         <div class="text-sm text-gray-500">Economy</div>
                                     </div>
-                                    <button onclick="selectFlight()" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
+                                    <button onclick="window.location.href='@Url.Action("ChonCho","User")'" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
                                         Chọn chuyến
                                     </button>
                                 </div>
@@ -295,7 +276,7 @@
                                         <div class="text-2xl font-bold text-accent">2.150.000₫</div>
                                         <div class="text-sm text-gray-500">Economy</div>
                                     </div>
-                                    <button onclick="selectFlight()" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
+                                    <button onclick="window.location.href='@Url.Action("ChonCho","User")'" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
                                         Chọn chuyến
                                     </button>
                                 </div>
@@ -342,7 +323,7 @@
                                         <div class="text-2xl font-bold text-accent">1.750.000₫</div>
                                         <div class="text-sm text-gray-500">Economy</div>
                                     </div>
-                                    <button onclick="selectFlight()" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
+                                    <button onclick="window.location.href='@Url.Action("ChonCho","User")'" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
                                         Chọn chuyến
                                     </button>
                                 </div>
@@ -463,9 +444,6 @@
     </div>
 
     <script>
-        function selectFlight() {
-            alert('Chuyển sang trang chọn ghế...');
-        }
 
         function openFilterModal() {
             document.getElementById('filterModal').classList.remove('hidden');
@@ -477,5 +455,3 @@
 
         document.getElementById('filterToggle').addEventListener('click', openFilterModal);
     </script>
-</body>
-</html>

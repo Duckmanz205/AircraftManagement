@@ -1,13 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập - Hệ Thống Quản Lý Máy Bay</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 flex items-center justify-center px-4 py-8">
+﻿@{ 
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 flex items-center justify-center px-4 py-8">
     <div class="w-full max-w-md">
         <!-- Logo và Header -->
         <div class="text-center mb-8">
@@ -162,5 +156,5 @@
             }, 2000);
         });
     </script>
-</body>
+</div>
 </html>

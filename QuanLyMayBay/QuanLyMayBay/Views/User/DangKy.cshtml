@@ -1,13 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Ký Tài Khoản - Hệ Thống Quản Lý Máy Bay</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-sky-100 min-h-screen py-8 px-4">
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="bg-gradient-to-br from-blue-50 to-sky-100 min-h-screen py-8 px-4">
     <div class="max-w-md mx-auto">
         <!-- Header với icon máy bay -->
         <div class="text-center mb-8">
@@ -99,7 +93,7 @@
             <div class="text-center mt-6">
                 <p class="text-gray-600">
                     Đã có tài khoản?
-                    <a href="window.location.href = @Url.Action("DangNhap","User")" 
+                    <a href="window.location.href = @Url.Action("DangNhap","User")"
                        class="text-blue-600 hover:text-blue-800 font-medium hover:underline">
                         Đăng nhập ngay
                     </a>
@@ -137,7 +131,7 @@
         }
 
         // Validation form
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
             // Reset errors
             const errorElements = document.querySelectorAll('[id$="Error"]');
             errorElements.forEach(el => {
@@ -216,7 +210,7 @@
         }
 
         // Real-time validation
-        document.getElementById('email').addEventListener('blur', function() {
+        document.getElementById('email').addEventListener('blur', function () {
             const email = this.value.trim();
             const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
             if (email && !emailRegex.test(email)) {
@@ -226,7 +220,7 @@
             }
         });
 
-        document.getElementById('phone').addEventListener('blur', function() {
+        document.getElementById('phone').addEventListener('blur', function () {
             const phone = this.value.trim();
             const phoneRegex = /^\d{10}$/;
             if (phone && !phoneRegex.test(phone)) {
@@ -236,7 +230,7 @@
             }
         });
 
-        document.getElementById('password').addEventListener('blur', function() {
+        document.getElementById('password').addEventListener('blur', function () {
             const password = this.value;
             if (password && password.length < 6) {
                 showError('passwordError', 'Mật khẩu phải có ít nhất 6 ký tự');
@@ -245,7 +239,7 @@
             }
         });
 
-        document.getElementById('confirmPassword').addEventListener('blur', function() {
+        document.getElementById('confirmPassword').addEventListener('blur', function () {
             const password = document.getElementById('password').value;
             const confirmPassword = this.value;
             if (confirmPassword && password !== confirmPassword) {
@@ -255,5 +249,5 @@
             }
         });
     </script>
-</body>
+</div>
 </html>
